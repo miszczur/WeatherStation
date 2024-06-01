@@ -1,38 +1,20 @@
 # ninja log v5
-7	481	7388529390217495	build.ninja	a205287db2fc4e75
-20	103	7388513246584623	WeatherStation_autogen/mocs_compilation.cpp	a90ec02a6e00e777
-20	103	7388513246584623	WeatherStation_autogen/timestamp	a90ec02a6e00e777
-111	1358	7388513259099746	CMakeFiles/WeatherStation.dir/weatherstation.cpp.obj	1451c82ed092e02f
-1358	1492	7388513260166188	WeatherStation.exe	adf19140d831de11
-20	103	7388513246584623	E:/Qt repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/timestamp	a90ec02a6e00e777
-20	103	7388513246584623	E:/Qt repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/mocs_compilation.cpp	a90ec02a6e00e777
-226	1372	7388512054337847	CMakeFiles/WeatherStation.dir/WeatherStation_autogen/mocs_compilation.cpp.obj	19f91813df6fcb2d
-231	1371	7388512054327852	CMakeFiles/WeatherStation.dir/main.cpp.obj	74dd3c5ac29bd877
-20	276	7388551427568864	WeatherStation_autogen/timestamp	a90ec02a6e00e777
-20	276	7388551427568864	WeatherStation_autogen/mocs_compilation.cpp	a90ec02a6e00e777
-20	276	7388551427568864	E:/Qt repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/timestamp	a90ec02a6e00e777
-20	276	7388551427568864	E:/Qt repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/mocs_compilation.cpp	a90ec02a6e00e777
-282	1504	7388551440168085	CMakeFiles/WeatherStation.dir/main.cpp.obj	74dd3c5ac29bd877
-276	1505	7388551440188126	CMakeFiles/WeatherStation.dir/WeatherStation_autogen/mocs_compilation.cpp.obj	19f91813df6fcb2d
-289	1509	7388551440222565	CMakeFiles/WeatherStation.dir/serialreader.cpp.obj	d868245ed0196060
-9	89	7388564242981185	WeatherStation_autogen/timestamp	a90ec02a6e00e777
-9	89	7388564242981185	WeatherStation_autogen/mocs_compilation.cpp	a90ec02a6e00e777
-9	89	7388564242981185	E:/Qt repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/timestamp	a90ec02a6e00e777
-9	89	7388564242981185	E:/Qt repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/mocs_compilation.cpp	a90ec02a6e00e777
-100	1209	7388564254460877	CMakeFiles/WeatherStation.dir/serialreader.cpp.obj	d868245ed0196060
-94	1210	7388564254460877	CMakeFiles/WeatherStation.dir/main.cpp.obj	74dd3c5ac29bd877
-89	1211	7388564254480878	CMakeFiles/WeatherStation.dir/WeatherStation_autogen/mocs_compilation.cpp.obj	19f91813df6fcb2d
-97	1314	7388564255505349	CMakeFiles/WeatherStation.dir/weatherstation.cpp.obj	1451c82ed092e02f
-1314	1470	7388564256741417	WeatherStation.exe	7df8e315df2eed00
-20	99	7388569460351221	WeatherStation_autogen/timestamp	a90ec02a6e00e777
-20	99	7388569460351221	WeatherStation_autogen/mocs_compilation.cpp	a90ec02a6e00e777
-20	99	7388569460351221	E:/Qt repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/timestamp	a90ec02a6e00e777
-20	99	7388569460351221	E:/Qt repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/mocs_compilation.cpp	a90ec02a6e00e777
-106	1388	7388569473215467	CMakeFiles/WeatherStation.dir/weatherstation.cpp.obj	1451c82ed092e02f
-1388	1528	7388569474318058	WeatherStation.exe	7df8e315df2eed00
-26	109	7388570032564836	WeatherStation_autogen/timestamp	a90ec02a6e00e777
-26	109	7388570032564836	WeatherStation_autogen/mocs_compilation.cpp	a90ec02a6e00e777
-26	109	7388570032564836	E:/Qt repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/timestamp	a90ec02a6e00e777
-26	109	7388570032564836	E:/Qt repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/mocs_compilation.cpp	a90ec02a6e00e777
-117	1362	7388570045066565	CMakeFiles/WeatherStation.dir/weatherstation.cpp.obj	1451c82ed092e02f
-1362	1490	7388570046070569	WeatherStation.exe	7df8e315df2eed00
+8	80	7389636171995235	WeatherStation_autogen/mocs_compilation.cpp	a90ec02a6e00e777
+7	481	7389644257326921	build.ninja	a205287db2fc4e75
+87	1205	7389636183204557	CMakeFiles/WeatherStation.dir/weatherstation.cpp.obj	1451c82ed092e02f
+8	80	7389636171995235	WeatherStation_autogen/timestamp	a90ec02a6e00e777
+1206	1318	7389636184105846	WeatherStation.exe	7df8e315df2eed00
+8	80	7389636171995235	E:/Qt repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/timestamp	a90ec02a6e00e777
+243	1281	7389625572944112	CMakeFiles/WeatherStation.dir/WeatherStation_autogen/mocs_compilation.cpp.obj	19f91813df6fcb2d
+8	80	7389636171995235	E:/Qt repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/mocs_compilation.cpp	a90ec02a6e00e777
+247	1280	7389625572944112	CMakeFiles/WeatherStation.dir/main.cpp.obj	74dd3c5ac29bd877
+114	1117	7389635790647246	CMakeFiles/WeatherStation.dir/serialreader.cpp.obj	d868245ed0196060
+34	254	7389644273144839	WeatherStation_autogen/timestamp	a90ec02a6e00e777
+34	254	7389644273144839	WeatherStation_autogen/mocs_compilation.cpp	a90ec02a6e00e777
+34	254	7389644273144839	E:/Qt repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/timestamp	a90ec02a6e00e777
+34	254	7389644273144839	E:/Qt repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/mocs_compilation.cpp	a90ec02a6e00e777
+263	1273	7389644283576908	CMakeFiles/WeatherStation.dir/serialreader.cpp.obj	15a0480e713dd27f
+258	1278	7389644283636911	CMakeFiles/WeatherStation.dir/main.cpp.obj	9fa9aeb794336b28
+254	1279	7389644283646905	CMakeFiles/WeatherStation.dir/WeatherStation_autogen/mocs_compilation.cpp.obj	cee6c926041ccc9f
+261	1399	7389644284832009	CMakeFiles/WeatherStation.dir/weatherstation.cpp.obj	1c6d7c9b251d4f3c
+1399	1530	7389644285802860	WeatherStation.exe	c5c142d92b29a307

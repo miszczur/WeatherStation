@@ -1,8 +1,6 @@
 #ifndef WEATHERSTATION_H
 #define WEATHERSTATION_H
-
 #include <QMainWindow>
-#include <QSerialPort>
 #include "serialreader.h"
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,14 +15,11 @@ class WeatherStation : public QMainWindow
 public:
     WeatherStation(QWidget *parent = nullptr);
     ~WeatherStation();
+signals:
 private slots:
-
     void on_pushButtonSearch_clicked();
-    void addToLogs(QString message);
     void on_pushButtonConnect_clicked();
     void on_pushButtonDisconnect_clicked();
-    void readFromPort();
-
     void on_pushButtonClearLogs_clicked();
 
 private:

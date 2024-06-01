@@ -4,105 +4,59 @@
 #include <QSerialPortInfo>
 #include <QList>
 #include <QDateTime>
-#include"serialreader.h"
+#include "serialreader.h"
+
 WeatherStation::WeatherStation(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::WeatherStation)
 {
     ui->setupUi(this);
-    this->device = new QSerialPort(this);
     this->sr = new SerialReader();
+    connect(this->sr,SIGNAL(Log(QString)),this->ui->textEditLogs,SLOT(append(QString))); //nasluchujemy czy przychodzi sygnal z loga i dodajemy msg
+    //connect(this->sr,SIGNAL(Log(QString)),this->ui->comboBoxDevices,SLOT(clear()));
+    // connect(this->sr,SIGNAL(ClearLog()),this->ui->textEditLogs,SLOT(clear()));           //nasluchujemy czy przychodzi sygnal clearlog i czyscimy loga
+    on_pushButtonSearch_clicked();
 }
 
 WeatherStation::~WeatherStation()
 {
     delete ui;
-    //delete device;
     delete sr;
 }
 
 void WeatherStation::on_pushButtonSearch_clicked()
 {
-
+//TODO: przeniesc do serial readera jak sie da
     ui->comboBoxDevices->clear();
-    QList<QSerialPortInfo> devices;
-    addToLogs("Szukam urządzeń...");
-    devices = QSerialPortInfo::availablePorts();
+    //emit sr->ClearLog();
+    sr->addToLogs("Szukam urządzeń...");
+    QList<QSerialPortInfo> devices = QSerialPortInfo::availablePorts();
     for(int i = 0; i < devices.count(); i++) {
-        this->addToLogs(devices.at(i).portName() +" "+ devices.at(i).description());
-        ui->comboBoxDevices->addItem(devices.at(i).portName() + " " + devices.at(i).description());
+        QString name = devices.at(i).portName() +" ("+ devices.at(i).description() + ")";
+        sr->addToLogs(name);
+        ui->comboBoxDevices->addItem(name);
     }
-    addToLogs("----------------------------------------");
+    sr->addToLogs("----------------------------------------");
 
 }
-
-void WeatherStation::addToLogs(QString message)
-{
-    QString currentDateTime = QDateTime::currentDateTime().toString("hh:mm:ss");
-    ui->textEditLogs->append(currentDateTime + " " + message);
-}
-
 void WeatherStation::on_pushButtonConnect_clicked()
 {
+    //TODO: przeniesc do serialreadera jak sie da
     if(ui->comboBoxDevices->count() == 0) {
-        this->addToLogs("Nie wykryto żadnych urządzeń!");
+        sr->addToLogs("Nie wykryto żadnych urządzeń!");
         return;
     }
-
     QString portName = ui->comboBoxDevices->currentText().split(" ").first();
-    this->device->setPortName(portName);
-
-    // OTWIERANIE PORTU COM:
-    if(!device->isOpen())  //ZABEZPIECZENIE PRZED POLACZENIEM SIE DO OTWARTEGO JUZ PORTU COM
-    {
-        if(device->open(QSerialPort::ReadWrite)) {
-            this->device->setBaudRate(QSerialPort::Baud9600); //BAUDRATE 9600
-            this->device->setDataBits(QSerialPort::Data8); //8 BITOW DANYCH
-            this->device->setParity(QSerialPort::NoParity); //BRAK PARZYSTOSCI
-            this->device->setStopBits(QSerialPort::OneStop); // JEDEN BIT STOPU
-            this->device->setFlowControl(QSerialPort::NoFlowControl); //BEZ KONTROLI PRZEPLYWU
-            this->addToLogs("Otwarto port szeregowy "+ device->portName());
-            // CONNECT:
-            connect(this->device, SIGNAL(readyRead()), this, SLOT(readFromPort()));
-        }
-        else {
-            this->addToLogs("Otwarcie portu szeregowego się nie powiodło!");
-        }
-    } else {
-        this->addToLogs("Port już jest otwarty!");
-        return;
-    }
+    sr->OpenPort(portName);
 }
-
 
 void WeatherStation::on_pushButtonDisconnect_clicked()
 {
-    if(this->device->isOpen()) {
-        this->device->close();
-        this->addToLogs("Zamknięto połączenie.");
-    } else {
-        this->addToLogs("Port nie jest otwarty!");
-        return;
-    }
+    sr->ClosePort();
 }
-
-void WeatherStation::readFromPort()
-{
-    while(this->device->canReadLine()) {
-        QString line = this->device->readLine();
-        //qDebug() << line;
-
-        QString terminator = "\r";
-        int pos = line.lastIndexOf(terminator);
-        //qDebug() << line.left(pos);
-
-        this->addToLogs(line.left(pos));
-    }
-}
-
 
 void WeatherStation::on_pushButtonClearLogs_clicked()
 {
-    ui->textEditLogs->clear();
+    // emit sr->ClearLog();
+    this->ui->textEditLogs->clear();
 }
-

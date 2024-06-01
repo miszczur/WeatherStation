@@ -148,12 +148,10 @@ E:/Qt\ repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/We
   C:/Qt/6.7.1/msvc2019_64/include/QtSerialPort/qserialport.h \
   C:/Qt/6.7.1/msvc2019_64/include/QtSerialPort/qserialportglobal.h \
   C:/Qt/6.7.1/msvc2019_64/include/QtSerialPort/qtserialportexports.h \
-  C:/Qt/6.7.1/msvc2019_64/include/QtWidgets/QMainWindow \
   C:/Qt/6.7.1/msvc2019_64/include/QtWidgets/qmainwindow.h \
   C:/Qt/6.7.1/msvc2019_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.7.1/msvc2019_64/include/QtWidgets/qtabwidget.h \
   C:/Qt/6.7.1/msvc2019_64/include/QtWidgets/qtwidgets-config.h \
   C:/Qt/6.7.1/msvc2019_64/include/QtWidgets/qtwidgetsexports.h \
   C:/Qt/6.7.1/msvc2019_64/include/QtWidgets/qtwidgetsglobal.h \
-  C:/Qt/6.7.1/msvc2019_64/include/QtWidgets/qwidget.h \
-  E:/Qt\ repos/WeatherStation/weatherstation.h
+  C:/Qt/6.7.1/msvc2019_64/include/QtWidgets/qwidget.h
