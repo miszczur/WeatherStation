@@ -1,4 +1,5 @@
 E:/Qt\ repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/WeatherStation_autogen/EWIEGA46WW/moc_serialreader.cpp: E:/Qt\ repos/WeatherStation/serialreader.h \
+  C:/Qt/6.7.1/msvc2019_64/include/QtCore/QObject \
   C:/Qt/6.7.1/msvc2019_64/include/QtCore/q20functional.h \
   C:/Qt/6.7.1/msvc2019_64/include/QtCore/q20memory.h \
   C:/Qt/6.7.1/msvc2019_64/include/QtCore/q20type_traits.h \
@@ -154,4 +155,5 @@ E:/Qt\ repos/WeatherStation/build/Desktop_x86_windows_msvc2022_pe_64bit-Debug/We
   C:/Qt/6.7.1/msvc2019_64/include/QtWidgets/qtwidgets-config.h \
   C:/Qt/6.7.1/msvc2019_64/include/QtWidgets/qtwidgetsexports.h \
   C:/Qt/6.7.1/msvc2019_64/include/QtWidgets/qtwidgetsglobal.h \
-  C:/Qt/6.7.1/msvc2019_64/include/QtWidgets/qwidget.h
+  C:/Qt/6.7.1/msvc2019_64/include/QtWidgets/qwidget.h \
+  E:/Qt\ repos/WeatherStation/measurement.h

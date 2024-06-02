@@ -1,6 +1,6 @@
 #include "serialreader.h"
 #include <QDateTime>
-
+#include "measurement.h"
 SerialReader::SerialReader()
 {
     this->device = new QSerialPort();
@@ -13,11 +13,15 @@ SerialReader::~SerialReader()
 
 void SerialReader::readFromPort()
 {
+    this->ms = new Measurement();
+
     while(this->device->canReadLine()) {
         QString line = this->device->readLine();
         QString terminator = "\r";
         int pos = line.lastIndexOf(terminator);
         addToLogs(line.left(pos));
+        ms->Append(line.left(pos));
+
     }
 }
 
@@ -33,8 +37,7 @@ void SerialReader::OpenPort(QString pn)
             this->device->setStopBits(QSerialPort::OneStop); // JEDEN BIT STOPU
             this->device->setFlowControl(QSerialPort::NoFlowControl); //BEZ KONTROLI PRZEPLYWU
             addToLogs("Otwarto port szeregowy "+ device->portName());
-            // CONNECT: PODLACZANIE SYGNALU DO ODCZYTYWANIA Z ARDUINO POD SLOT READFROMPORT
-            connect(this->device, SIGNAL(readyRead()), this, SLOT(readFromPort()));
+            connect(this->device, SIGNAL(readyRead()), this, SLOT(readFromPort()));  // CONNECT: PODLACZANIE SYGNALU DO ODCZYTYWANIA Z ARDUINO POD SLOT READFROMPORT
         }
         else {
             addToLogs("Otwarcie portu szeregowego się nie powiodło!");
@@ -46,6 +49,7 @@ void SerialReader::OpenPort(QString pn)
 
 void SerialReader::ClosePort()
 {
+
     if(this->device->isOpen()) {
         this->device->close();
         addToLogs("Zamknięto połączenie.");

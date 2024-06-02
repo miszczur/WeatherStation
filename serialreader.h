@@ -1,12 +1,9 @@
 #ifndef SERIALREADER_H
 #define SERIALREADER_H
+#include "measurement.h"
 #include "qmainwindow.h"
 #include <QSerialPort>
-QT_BEGIN_NAMESPACE
-namespace Ui {
-class WeatherStation;
-}
-QT_END_NAMESPACE
+
 class SerialReader: public QMainWindow
 {
     Q_OBJECT
@@ -23,6 +20,7 @@ public:
     void readFromPort();
 private:
     QSerialPort* device;
+    Measurement* ms;
 };
 
 #endif // SERIALREADER_H

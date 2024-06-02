@@ -41,7 +41,6 @@ void WeatherStation::on_pushButtonSearch_clicked()
 }
 void WeatherStation::on_pushButtonConnect_clicked()
 {
-    //TODO: przeniesc do serialreadera jak sie da
     if(ui->comboBoxDevices->count() == 0) {
         sr->addToLogs("Nie wykryto żadnych urządzeń!");
         return;
