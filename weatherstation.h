@@ -24,8 +24,7 @@ private slots:
 
 private:
     Ui::WeatherStation *ui;
-    QSerialPort* device;
-    SerialReader* sr;
+    QSerialPort *device;
+    SerialReader *sr;
 };
 #endif // WEATHERSTATION_H
-

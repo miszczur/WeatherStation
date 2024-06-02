@@ -1,5 +1,5 @@
-#include "weatherstation.h"
 #include <QApplication>
+#include "weatherstation.h"
 
 int main(int argc, char *argv[])
 {
