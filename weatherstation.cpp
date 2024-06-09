@@ -54,10 +54,22 @@ void WeatherStation::on_pushButtonConnect_clicked()
 void WeatherStation::on_pushButtonDisconnect_clicked()
 {
     sr->ClosePort();
+
+    // TEST: Wpisanie rekordu do bazy danych
+    /*WeatherRecord record;
+    record.time = QDateTime::currentDateTime();
+    record.temperature = 72.3;
+    record.humidity = 99.2;
+    dbClient.AddRecordToDataBase(&record);*/
 }
 
 void WeatherStation::on_pushButtonClearLogs_clicked()
 {
     // emit sr->ClearLog();
     this->ui->textEditLogs->clear();
+
+    // TEST: odczytu calej tablicy z bazy danych (wyswietla wyniki do gDebug)
+    /*vector<WeatherRecord> records;
+    dbClient.GetAllRowsFromDataBase(&records); // do usuniecia!!!!!!!!!!!!!!
+    records.clear();*/
 }

@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "qmainwindow.h"
+#include "databaseaccess.h"
 
 class Measurement : public QMainWindow
 {
@@ -16,6 +17,7 @@ private:
     QList<int> listOfHumidities;
     int humidity;
     int temperature;
+    DataBaseClient dbClient; // Obiekt dostepu do bazy danych
 };
 
 #endif // MEASUREMENT_H
