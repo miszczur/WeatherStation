@@ -1,7 +1,10 @@
 #ifndef WEATHERSTATION_H
 #define WEATHERSTATION_H
 #include <QMainWindow>
+#include "logger.h"
 #include "serialreader.h"
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class WeatherStation;
@@ -26,5 +29,6 @@ private:
     Ui::WeatherStation *ui;
     QSerialPort *device;
     SerialReader *sr;
+    Logger* log;
 };
 #endif // WEATHERSTATION_H
