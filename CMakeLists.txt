@@ -29,6 +29,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         measurement.h measurement.cpp
         databaseaccess.h
         databaseaccess.cpp
+        logger.h logger.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET WeatherStation APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

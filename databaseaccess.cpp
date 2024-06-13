@@ -97,4 +97,5 @@ DataBaseClient::ReturnCodes DataBaseClient::AddRecordToDataBase(const WeatherRec
     return NoError;
 }
 
-DataBaseClient::~DataBaseClient() {}
+DataBaseClient::~DataBaseClient() {
+}

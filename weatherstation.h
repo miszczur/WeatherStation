@@ -1,8 +1,9 @@
 #ifndef WEATHERSTATION_H
 #define WEATHERSTATION_H
 #include <QMainWindow>
+#include "logger.h"
 #include "serialreader.h"
-//#include "databaseaccess.h" // do usuniecia!!!!!!!!!!!!!!
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -28,6 +29,6 @@ private:
     Ui::WeatherStation *ui;
     QSerialPort *device;
     SerialReader *sr;
-    //DataBaseClient dbClient; // do usuniecia!!!!!!!!!!!!!!
+    Logger* log;
 };
 #endif // WEATHERSTATION_H

@@ -13,11 +13,10 @@ public:
     void Append(QString line);
 
 private:
-    QList<int> listOfTemperatures; //stworzylem liste odczytow temperatur, w zaleznosci od potrzeby i budowy dalej mozna ja wykorzystywac, tak samo liste wilgotnosci
-    QList<int> listOfHumidities;
     int humidity;
     int temperature;
     DataBaseClient dbClient; // Obiekt dostepu do bazy danych
+    WeatherRecord newDataBaseRecord;
 };
 
 #endif // MEASUREMENT_H
