@@ -11,12 +11,13 @@ class Measurement : public QMainWindow
 public:
     Measurement();
     void Append(QString line);
+    void PushRecordsToDataBase(void);
 
 private:
     int humidity;
     int temperature;
+    vector<WeatherRecord> newDataBaseRecords; // Wektor wpisow czekajacych na wpis do bazy danych
     DataBaseClient dbClient; // Obiekt dostepu do bazy danych
-    WeatherRecord newDataBaseRecord;
 };
 
 #endif // MEASUREMENT_H

@@ -12,6 +12,7 @@ public:
     Logger *serialLog;
     SerialReader();
     virtual ~SerialReader();
+    void PushRecordsToDataBase(void);
 signals:
     void Log(QString msg);
     void ClearLog();

@@ -32,9 +32,10 @@ public:
         InputParametersError // Blad parametrow wejsciowych (np. NULL wskaznik)
     } ReturnCodes;
 
-    ReturnCodes GetAllRowsFromDataBase(vector<WeatherRecord> * records); //Metoda zwracajaca wszystkie wiersze z tabeli bazy danych
+    ReturnCodes GetAllRowsFromDataBase(vector<WeatherRecord> * records); // Metoda zwracajaca wszystkie wiersze z tabeli bazy danych
 
     ReturnCodes AddRecordToDataBase(const WeatherRecord * const newRecord);  // Funkcja dodajaca nowy rekord do tabeli w bazie danych
+    ReturnCodes AddMultipleRecordsToDataBase(const vector<WeatherRecord> * const newRecords); // Funcja dodajca wiele nowych rekordow do tabeli w bazie danych
 };
 
 #endif // DATABASEACCESS_H

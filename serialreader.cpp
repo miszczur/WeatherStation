@@ -60,3 +60,9 @@ void SerialReader::ClosePort()
         return;
     }
 }
+
+void SerialReader::PushRecordsToDataBase(void)
+{
+    // Wyslij wszystkie wpisy z pamieci do bazy danych
+    ms->PushRecordsToDataBase();
+}

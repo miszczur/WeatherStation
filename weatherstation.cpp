@@ -70,6 +70,9 @@ void WeatherStation::on_pushButtonClearLogs_clicked()
     // emit sr->ClearLog();
     this->ui->textEditLogs->clear();
 
+    // Wyslij wszystkie zapisane rekordy do bazy danych
+    sr->PushRecordsToDataBase();
+
     // TEST: odczytu calej tablicy z bazy danych (wyswietla wyniki do gDebug)
     /*vector<WeatherRecord> records;
     dbClient.GetAllRowsFromDataBase(&records); // do usuniecia!!!!!!!!!!!!!!
