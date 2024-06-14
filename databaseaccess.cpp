@@ -3,6 +3,7 @@
 
 DataBaseClient::DataBaseClient()
 {
+    this->dbLog = new Logger();
     // Tworzenie obiektu bazy danych
     db = QSqlDatabase::addDatabase("QMYSQL"); // Stworzenie obiektu bazy danych MyQSL
     db.setHostName("db4free.net");         // Adres serwera

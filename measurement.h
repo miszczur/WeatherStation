@@ -10,6 +10,7 @@ class Measurement : public QMainWindow
     Q_OBJECT
 public:
     Measurement();
+    ~Measurement();
     void Append(QString line);
     void PushRecordsToDataBase(void);
 

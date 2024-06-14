@@ -1,6 +1,7 @@
 #ifndef DATABASEACCESS_H
 #define DATABASEACCESS_H
 
+#include "logger.h"
 #include <QtSql>
 
 using namespace std;
@@ -18,6 +19,7 @@ class DataBaseClient
 {
 private:
     QSqlDatabase db; // Przechowuje obiekt bazy danych
+    Logger* dbLog;
 
 public:
     DataBaseClient();

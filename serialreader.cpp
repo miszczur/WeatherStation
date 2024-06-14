@@ -12,10 +12,12 @@ SerialReader::~SerialReader()
 {
     delete device;
     delete ms;
+    delete serialLog;
 }
 
 void SerialReader::readFromPort()
 {
+    //POBRANIE DANYCH Z POLACZENIA, PRZETWORZENIE I DODANIE DO OBIEKTU POMIARU
     while (this->device->canReadLine()) {
 
         QString line = this->device->readLine();
@@ -52,6 +54,7 @@ void SerialReader::OpenPort(QString pn)
 
 void SerialReader::ClosePort()
 {
+    //ZAMYKANIE POLACZENIA Z ZABEZPIECZENIEM PRZED NIEOTWARTYM PORTEM
     if (this->device->isOpen()) {
         this->device->close();
         serialLog->addToLogWindow("Zamknięto połączenie.");
@@ -64,5 +67,11 @@ void SerialReader::ClosePort()
 void SerialReader::PushRecordsToDataBase(void)
 {
     // Wyslij wszystkie wpisy z pamieci do bazy danych
+    if(device->isOpen()){
     ms->PushRecordsToDataBase();
+    } else {
+        serialLog->addToLogWindow("Port nie jest otwarty! Nie można wysłać nic do bazy!");
+        return;
+    }
 }
+

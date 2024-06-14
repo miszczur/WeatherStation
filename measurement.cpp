@@ -4,6 +4,8 @@
 
 Measurement::Measurement() {}
 
+Measurement::~Measurement() {}
+
 
 void Measurement::Append(QString line)
 {
