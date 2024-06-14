@@ -9,9 +9,11 @@ class SerialReader : public QMainWindow
 {
     Q_OBJECT
 public:
-    Logger *serialLog;
+
     SerialReader();
     virtual ~SerialReader();
+    void PushRecordsToDataBase(void);
+    Logger *serialLog;
 signals:
     void Log(QString msg);
     void ClearLog();
@@ -23,7 +25,7 @@ public slots:
 private:
     QSerialPort *device;
     Measurement *ms;
-  //  Logger *serialLog;
+
 };
 
 #endif // SERIALREADER_H

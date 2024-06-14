@@ -3,6 +3,7 @@
 
 DataBaseClient::DataBaseClient()
 {
+    this->dbLog = new Logger();
     // Tworzenie obiektu bazy danych
     db = QSqlDatabase::addDatabase("QMYSQL"); // Stworzenie obiektu bazy danych MyQSL
     db.setHostName("db4free.net");         // Adres serwera
@@ -97,5 +98,49 @@ DataBaseClient::ReturnCodes DataBaseClient::AddRecordToDataBase(const WeatherRec
     return NoError;
 }
 
-DataBaseClient::~DataBaseClient() {
+DataBaseClient::ReturnCodes DataBaseClient::AddMultipleRecordsToDataBase(const vector<WeatherRecord> * const newRecords)
+{
+    // Sprawdzenie parametrow wejsciowych
+    if (newRecords == nullptr)
+    {
+        qDebug() << "Error: Przekazany parametr to NULL.";
+        return InputParametersError;
+    }
+
+    // Sprawdzenie czy przekazana lista jest pusta
+    if (newRecords->empty())
+        return NoError; // Lista pusta, czyli nie ma co zapisac -> to nie blad
+
+    // Otwarcie bazy danych
+    if (!db.open())
+    {
+        qDebug() << "Nie mozna otworzyc bazy danych: " << db.lastError().text();
+        return ConnectionToDataBaseError;
+    }
+
+    for (const WeatherRecord& record : *newRecords)
+    {
+        // Stworzenie zapytania do bazy danych o dodanie wpisu
+        QSqlQuery query;
+        query.prepare("INSERT INTO WeatherData (DateTime, Temperature, Humidity) VALUES (:DateTime, :Temperature, :Humidity)");
+        query.bindValue(":DateTime", record.time);
+        query.bindValue(":Temperature", record.temperature);
+        query.bindValue(":Humidity", record.humidity);
+
+        // Wykonaj zapytanie (wpis)
+        if (!query.exec())
+        {
+            qDebug() << "Blad wykonania zapytania: " << query.lastError().text();
+
+            // Zamknięcie bazy danych
+            db.close();
+            return QueryError;
+        }
+    }
+
+    // Zamknięcie bazy danych
+    db.close();
+    return NoError;
 }
+
+DataBaseClient::~DataBaseClient() {}

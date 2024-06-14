@@ -25,6 +25,8 @@ private slots:
     void on_pushButtonDisconnect_clicked();
     void on_pushButtonClearLogs_clicked();
 
+    void on_pushButtonSendToDB_clicked();
+
 private:
     Ui::WeatherStation *ui;
     QSerialPort *device;

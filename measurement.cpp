@@ -4,6 +4,8 @@
 
 Measurement::Measurement() {}
 
+Measurement::~Measurement() {}
+
 
 void Measurement::Append(QString line)
 {
@@ -16,9 +18,25 @@ void Measurement::Append(QString line)
     posOfTemp = line.indexOf("*C");
     this->temperature = line.left(posOfTemp).toInt();
 
-    // Wpisanie rekordu do bazy danych
-    newDataBaseRecord.time = QDateTime::currentDateTime();
-    newDataBaseRecord.temperature = (float)this->temperature;
-    newDataBaseRecord.humidity = (float)this->humidity;
-    dbClient.AddRecordToDataBase(&newDataBaseRecord);
+    // Zapisanie nowego rekordu do wektora
+    WeatherRecord record;
+    record.time = QDateTime::currentDateTime();
+    record.temperature = (float)this->temperature;
+    record.humidity = (float)this->humidity;
+    newDataBaseRecords.push_back(record);
+}
+
+void Measurement::PushRecordsToDataBase(void)
+{
+    DataBaseClient::ReturnCodes ret;
+
+    // Zapisz wszystkie wpisy w bazie danych
+    if ((ret = dbClient.AddMultipleRecordsToDataBase(&newDataBaseRecords)) != DataBaseClient::NoError)
+    {
+        qDebug() << "Blad podczas zapisu do bazy danych: " << ret;
+        return;
+    }
+
+    // Wyczysc wektor
+    newDataBaseRecords.clear();
 }
