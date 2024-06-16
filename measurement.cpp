@@ -2,9 +2,12 @@
 
 #include <QDebug>
 
-Measurement::Measurement() {}
+Measurement::Measurement() {
+}
 
-Measurement::~Measurement() {}
+Measurement::~Measurement() {
+
+}
 
 
 void Measurement::Append(QString line)
@@ -18,6 +21,7 @@ void Measurement::Append(QString line)
     posOfTemp = line.indexOf("*C");
     this->temperature = line.left(posOfTemp).toInt();
 
+    emit newData(temperature,humidity);
     // Zapisanie nowego rekordu do wektora
     WeatherRecord record;
     record.time = QDateTime::currentDateTime();

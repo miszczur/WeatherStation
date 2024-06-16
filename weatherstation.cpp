@@ -9,10 +9,22 @@
 WeatherStation::WeatherStation(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::WeatherStation)
+    , weatherChart(new WeatherChart(this))
 {
     ui->setupUi(this);
     sr = new SerialReader();
     log = new Logger();
+
+    // Pobranie layoutu z chartContainer i dodanie wykresu
+    QVBoxLayout *layout = new QVBoxLayout(ui->chartContainer);
+    layout->addWidget(weatherChart);
+    ui->chartContainer->setLayout(layout);
+    connect(this->sr, &SerialReader::srData, this->weatherChart, &WeatherChart::addDataPoint);
+    // connect(this->sr,               //nasluchujemy czy przychodzi sygnal AddLog i dodajemy komunikat
+    //         SIGNAL(srData(int t, int h)),
+    //         this->weatherChart,
+    //         SLOT(addDataPoint(int t, int h)));
+
     connect(this->log,               //nasluchujemy czy przychodzi sygnal AddLog i dodajemy komunikat
             SIGNAL(AddLog(QString)),
             this->ui->textEditLogs,
@@ -28,6 +40,7 @@ WeatherStation::~WeatherStation()
     delete device;
     delete sr;
     delete ui;
+    delete weatherChart;
 }
 
 void WeatherStation::on_pushButtonSearch_clicked()
@@ -88,6 +101,13 @@ void WeatherStation::on_pushButtonClearLogs_clicked()
 void WeatherStation::on_pushButtonSendToDB_clicked()
 {
     // Wyslij wszystkie zapisane rekordy do bazy danych
+
       sr->PushRecordsToDataBase();
+}
+
+
+void WeatherStation::on_pushButtonClearChart_clicked()
+{
+    if(sr->isOpen()) weatherChart->clearChart();
 }
 

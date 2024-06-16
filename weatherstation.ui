@@ -21,6 +21,9 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+    </item>
     <item row="0" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
@@ -73,13 +76,6 @@
               </property>
              </widget>
             </item>
-            <item>
-             <widget class="QPushButton" name="pushButtonSendToDB">
-              <property name="text">
-               <string>Wyślij dane do bazy na serwer</string>
-              </property>
-             </widget>
-            </item>
            </layout>
           </widget>
          </item>
@@ -88,18 +84,29 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="2">
-     <widget class="QWidget" name="widget" native="true">
+    <item row="0" column="3">
+     <widget class="QWidget" name="chartContainer" native="true">
       <property name="minimumSize">
        <size>
-        <width>400</width>
+        <width>350</width>
         <height>0</height>
        </size>
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
-     <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+    <item row="1" column="3">
+     <widget class="QPushButton" name="pushButtonClearChart">
+      <property name="text">
+       <string>Wyczyść wykres</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="pushButtonSendToDB">
+      <property name="text">
+       <string>Wyślij dane do bazy na serwer</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

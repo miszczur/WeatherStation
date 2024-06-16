@@ -3,6 +3,7 @@
 #include <QMainWindow>
 #include "logger.h"
 #include "serialreader.h"
+#include "weatherchart.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -27,10 +28,13 @@ private slots:
 
     void on_pushButtonSendToDB_clicked();
 
+    void on_pushButtonClearChart_clicked();
+
 private:
     Ui::WeatherStation *ui;
     QSerialPort *device;
     SerialReader *sr;
     Logger* log;
+    WeatherChart *weatherChart;
 };
 #endif // WEATHERSTATION_H
