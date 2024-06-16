@@ -6,6 +6,11 @@ SerialReader::SerialReader()
     this->device = new QSerialPort();
     this->ms = new Measurement();
     this->serialLog = new Logger();
+    connect(this->ms, &Measurement::newData, this, &SerialReader::HandleData);
+    // connect(this->ms,
+    //         SIGNAL(newData(int temperature, int humidity)),
+    //         this,
+    //         SLOT(HandleData(int t, int h)));
 }
 
 SerialReader::~SerialReader()
@@ -26,6 +31,17 @@ void SerialReader::readFromPort()
         serialLog->addToLogWindow(line.left(pos));
         ms->Append(line.left(pos));
     }
+}
+
+bool SerialReader::isOpen()
+{
+    if (device->isOpen()) return true;
+    else return false;
+}
+
+void SerialReader::HandleData(int temperature, int humidity)
+{
+    emit srData(temperature, humidity);
 }
 
 void SerialReader::OpenPort(QString pn)

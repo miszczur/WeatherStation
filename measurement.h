@@ -13,6 +13,8 @@ public:
     ~Measurement();
     void Append(QString line);
     void PushRecordsToDataBase(void);
+signals:
+    void newData(int temperature, int humidity);
 
 private:
     int humidity;
