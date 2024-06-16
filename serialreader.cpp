@@ -3,14 +3,20 @@
 #include "measurement.h"
 SerialReader::SerialReader()
 {
+    //INICJALIZACJA POTRZEBNYCH OBIEKTÓW
     this->device = new QSerialPort();
     this->ms = new Measurement();
     this->serialLog = new Logger();
+
+    //DOMYŚLNA KONFIGURACJA SERIAL PORTU
+    this->device->setBaudRate(QSerialPort::Baud9600);         //BAUDRATE 9600
+    this->device->setDataBits(QSerialPort::Data8);            //8 BITOW DANYCH
+    this->device->setParity(QSerialPort::NoParity);           //BRAK PARZYSTOSCI
+    this->device->setStopBits(QSerialPort::OneStop);          // JEDEN BIT STOPU
+    this->device->setFlowControl(QSerialPort::NoFlowControl); //BEZ KONTROLI PRZEPLYWU
+
+
     connect(this->ms, &Measurement::newData, this, &SerialReader::HandleData);
-    // connect(this->ms,
-    //         SIGNAL(newData(int temperature, int humidity)),
-    //         this,
-    //         SLOT(HandleData(int t, int h)));
 }
 
 SerialReader::~SerialReader()
@@ -46,16 +52,13 @@ void SerialReader::HandleData(int temperature, int humidity)
 
 void SerialReader::OpenPort(QString pn)
 {
-    this->device->setPortName(pn);
+    this->device->setPortName(pn); //USTAWIENIE ODPOWIEDNIEGO PORTU COM
     if (!device->isOpen()) //ZABEZPIECZENIE PRZED POLACZENIEM SIE DO OTWARTEGO JUZ PORTU COM
     {
         if (device->open(QSerialPort::ReadOnly)) {
-            this->device->setBaudRate(QSerialPort::Baud9600);         //BAUDRATE 9600
-            this->device->setDataBits(QSerialPort::Data8);            //8 BITOW DANYCH
-            this->device->setParity(QSerialPort::NoParity);           //BRAK PARZYSTOSCI
-            this->device->setStopBits(QSerialPort::OneStop);          // JEDEN BIT STOPU
-            this->device->setFlowControl(QSerialPort::NoFlowControl); //BEZ KONTROLI PRZEPLYWU
+
             serialLog->addToLogWindow("Otwarto port szeregowy " + device->portName());
+
             connect(this->device,
                     SIGNAL(readyRead()),
                     this,
