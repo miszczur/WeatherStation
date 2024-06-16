@@ -19,20 +19,19 @@ WeatherStation::WeatherStation(QWidget *parent)
     QVBoxLayout *layout = new QVBoxLayout(ui->chartContainer);
     layout->addWidget(weatherChart);
     ui->chartContainer->setLayout(layout);
-    connect(this->sr, &SerialReader::srData, this->weatherChart, &WeatherChart::addDataPoint);
-    // connect(this->sr,               //nasluchujemy czy przychodzi sygnal AddLog i dodajemy komunikat
-    //         SIGNAL(srData(int t, int h)),
-    //         this->weatherChart,
-    //         SLOT(addDataPoint(int t, int h)));
 
-    connect(this->log,               //nasluchujemy czy przychodzi sygnal AddLog i dodajemy komunikat
-            SIGNAL(AddLog(QString)),
+    connect(this->sr,                   //nasluchujemy czy przychodzi sygnal serial reader data i dodajemy pomiar do wykresu
+            &SerialReader::srData,
+            this->weatherChart,
+            &WeatherChart::addDataPoint);
+    connect(this->log,
+            &Logger::AddLog,            //nasluchujemy czy przychodzi sygnal AddLog i dodajemy komunikat
             this->ui->textEditLogs,
-            SLOT(append(QString)));
-    connect(sr->serialLog,
-            SIGNAL(AddLog(QString)), //nasluchujemy czy przychodzi sygnal AddLog z obiektu serialreader i dodajemy komunikat
+            &QTextEdit::append);
+    connect(this->sr->serialLog,
+            &Logger::AddLog,            //nasluchujemy czy przychodzi sygnal AddLog z obiektu serialreader i dodajemy komunikat
             this->ui->textEditLogs,
-            SLOT(append(QString)));
+            &QTextEdit::append);
 }
 
 WeatherStation::~WeatherStation()
