@@ -11,7 +11,7 @@ class Measurement : public QMainWindow
 public:
     Measurement();
     ~Measurement();
-    void Append(QString line);
+    void Append(QString line); //
     void PushRecordsToDataBase(void);
 signals:
     void newData(int temperature, int humidity);
