@@ -45,11 +45,6 @@ bool SerialReader::isOpen()
     else return false;
 }
 
-void SerialReader::HandleData(int temperature, int humidity)
-{
-    emit srData(temperature, humidity);
-}
-
 void SerialReader::OpenPort(QString pn)
 {
     this->device->setPortName(pn); //USTAWIENIE ODPOWIEDNIEGO PORTU COM
@@ -94,3 +89,7 @@ void SerialReader::PushRecordsToDataBase(void)
     }
 }
 
+void SerialReader::HandleData(int temperature, int humidity)
+{
+    emit srData(temperature, humidity);
+}
